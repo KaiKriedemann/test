@@ -127,7 +127,9 @@ sollte eine Unabhängigkeit bestehen.
 A,C und D sind zwar alles Aufrufe der selben Funktion, sind aber deshalb unabhängig voneinander, weil sie zu 
 vollkommenen Zeitpunkten aufgerufen werden. Es kann nicht garantiert werden, dass diese jeweils in gleichen 
 zeitlichen Abständen voneinander aufgerufen werden (es sei denn, man führt eine Automatisierung dieser 
-Vorgänge ein). Je nach Auslastung und HW variieren also dort die zurückgekommenen Zeitpunkte und Werte. Man kann lediglich sagen, dass $A \leq C \leq D$, weil nach zeitlichem Ablauf wesentlich mehr Prozessorzyklen erfolgt sind.
+Vorgänge ein). Je nach Auslastung und HW variieren also dort die zurückgekommenen Zeitpunkte und Werte. 
+Man kann lediglich sagen, dass $A \leq C \leq D$, weil nach zeitlichem Ablauf wesentlich mehr 
+Prozessorzyklen erfolgt sind.
 
 \section*{Aufgabe 2 - Deterministische Zufallszahlengeneratoren}
 
@@ -137,7 +139,11 @@ Zunächst hat man bei diesem Verfahren den Startwert Seed. Dieser dient als Inpu
 
 \subsection*{b}
 
-Hier kommen ein Initialisierungsvektor IV, ein Counter, ein Schlüssel K, Blockchiffren und Klartexte zum Einsatz. Input für die Blockchiffre ist eine Konkatenation des Ivs (Nonce) und des Counters (iterative Erhöhung), sowie der Schlüssel k. Das Ergebnis wird mit einem Klartextblock (KTB) addiert und dieses Ergebnis wiederum ist ein Geheimtextblock (GTB). Dieser Vorgang ist dabei komplett parallel durchführbar, d.h. es bestehen keine Abhängigkeiten untereinander. Dies bedeutet dabei, dass man also aus der Kenntnis eines Blockes nicht benachbarte oder andere Blöcke kompromittieren kann. Auf die Aufgabe bezogen bedeutet dies, dass man aus einer Teilfolge also nicht auf den Vorgänger bzw. Nachfolger schließen kann.
+Hier kommen ein Initialisierungsvektor IV, ein Counter, ein Schlüssel K, Blockchiffren und Klartexte zum Einsatz. Input für die Blockchiffre ist eine Konkatenation des Ivs (Nonce) und des Counters (iterative Erhöhung), sowie der Schlüssel k. Das Ergebnis wird mit einem Klartextblock (KTB) addiert und dieses Ergebnis wiederum ist ein 
+Geheimtextblock (GTB). Dieser Vorgang ist dabei komplett parallel durchführbar, d.h. es bestehen keine 
+Abhängigkeiten untereinander. Dies bedeutet dabei, dass man also aus der Kenntnis eines Blockes nicht 
+benachbarte oder andere Blöcke kompromittieren kann. Auf die Aufgabe bezogen bedeutet dies, dass man 
+aus einer Teilfolge also nicht auf den Vorgänger bzw. Nachfolger schließen kann.
 
 \section*{Aufgabe 3 - Instanzauthentisierung}
 
@@ -149,21 +155,28 @@ Hier kommen ein Initialisierungsvektor IV, ein Counter, ein Schlüssel K, Blockc
 \end{itemize}
 \subsection*{Zeitgesteuerte Passwortgeneratoren}
 \begin{itemize}
-\item  Phishing:  kriegt dann zwar das gesendete p, kennt jedoch das vorab ausgetauschte g nicht; schickt er aber die Antwort immerhalb des Toleranz-Intervalls $\Rightarrow$  Angriff geglückt
+\item  Phishing:  kriegt dann zwar das gesendete p, kennt jedoch das vorab ausgetauschte g nicht; schickt er aber
+die Antwort immerhalb des Toleranz-Intervalls $\Rightarrow$  Angriff geglückt
 \item Key Logging:  kriegt zwar dann die message mit, allerdings nicht den key, da der ja bereits vorab ausgetauscht worden ist
 \item Replay: generell nicht; innerhalb des Toleranzintervalls jedoch schon (in VL: 30 s)
 \end{itemize}
 \subsection*{Ereignisgesteuerte Passwortgeneratoren}
 \begin{itemize}
-\item  Phishing: Angreifer kennt zwar g nicht; täuscht aber Opfer und kriegt pt (ohne Notwendigkeit der Kenntnis von S oder k); schickt  $p_{t}$ an Prüfer;  $p_{t}$ ist ja gültiger Lamport-Hash $\Rightarrow$  akzeptiert $\Rightarrow$  getäuscht
+\item  Phishing: Angreifer kennt zwar g nicht; täuscht aber Opfer und kriegt pt (ohne Notwendigkeit der 
+Kenntnis von S oder k); schickt  $p_{t}$ an Prüfer;  $p_{t}$ ist ja gültiger Lamport-Hash $\Rightarrow$  
+akzeptiert $\Rightarrow$  getäuscht
 \item Key Logging:  nach Benutzung eines Einmalpasswortes wird ein anderes benutzt; Keylogger kann dann zwar das aktuelle Passwort mit, müsste aber Sendung des aktuellen Passwortes vom Opfer verhindern und selbst die Sendung vornehmen; also eher wirkungslos
-\item Replay:  Generierung neuer Einmalpasswörter (N Stück); bei vollständiger Benutzung: neuer Startwert S für neue N Hashfunktionen; Replay-A. somit nicht möglich
+\item Replay:  Generierung neuer Einmalpasswörter (N Stück); bei vollständiger Benutzung: neuer Startwert 
+S für neue N Hashfunktionen; Replay-A. somit nicht möglich
 \end{itemize}
 \subsection*{Challenge Response Passwortgeneratoren}
 \begin{itemize}
-\item  Phishing: Angreifer kennt k nicht, kriegt dann c übertragen, schickt c an das Opfer, bekommt das r, schickt r an den Prüfer, r = r' $\Rightarrow$  ohne Kenntnis von k erfolgreich getäuscht
-\item Key Logging: loggt dann r mit (falls es eingegeben wird), aber auch hier wieder: müsste Übertragung von r an Prüfer durch Beweisenden verhindern und stattdessen sein geloggtes r schicken
-\item Replay: wenn c wirklich jedes Mal wechselt, ändert sich auch r; Angreifer müsste dann sehr, sehr viele c sammeln; theoretisch möglich, praktisch wenig rentabel
+\item  Phishing: Angreifer kennt k nicht, kriegt dann c übertragen, schickt c an das Opfer, bekommt das 
+r, schickt r an den Prüfer, r = r' $\Rightarrow$  ohne Kenntnis von k erfolgreich getäuscht
+\item Key Logging: loggt dann r mit (falls es eingegeben wird), aber auch hier wieder: müsste Übertragung 
+von r an Prüfer durch Beweisenden verhindern und stattdessen sein geloggtes r schicken
+\item Replay: wenn c wirklich jedes Mal wechselt, ändert sich auch r; Angreifer müsste dann sehr, sehr 
+viele c sammeln; theoretisch möglich, praktisch wenig rentabel
 \end{itemize}
 
 \section*{Aufgabe 4 - Passwörter}
