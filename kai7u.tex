@@ -116,10 +116,18 @@
 
 \section*{Aufgabe 1 - Seed-Generierung}
 
-B und A,C,D sind offensichtlich unabhängig voneinander, weil dies zunächst 2 vollkommen unterschiedliche Systemaufrufe sind. Wichtig ist es, dass sie unabhängig voneinander sind, da man sonst aus Kenntnis dreier Werte den 4. berechnen könnte. Angenommen, A,C und D sind bekannt, B jedoch nicht. Wären sie nicht unabhängig, so wäre B jetzt berechenbar (abhängig). Sind sie unabhängig, so muss der Angreifer nur noch die $2^{23}$ des Wertes B ermitteln. Dies sind zwar immer noch sehr viele Werte, aber nicht unmöglich zu berechnen. Deshalb sollte eine Unabhängigkeit bestehen.
+B und A,C,D sind offensichtlich unabhängig voneinander, weil dies zunächst 2 vollkommen unterschiedliche 
+Systemaufrufe sind. Wichtig ist es, dass sie unabhängig voneinander sind, da man sonst aus Kenntnis dreier 
+Werte den 4. berechnen könnte. Angenommen, A,C und D sind bekannt, B jedoch nicht. Wären sie nicht unabhängig, 
+so wäre B jetzt berechenbar (abhängig). Sind sie unabhängig, so muss der Angreifer nur noch die $2^{23}$ des 
+Wertes B ermitteln. Dies sind zwar immer noch sehr viele Werte, aber nicht unmöglich zu berechnen. Deshalb 
+sollte eine Unabhängigkeit bestehen.
 \newline
 
-A,C und D sind zwar alles Aufrufe der selben Funktion, sind aber deshalb unabhängig voneinander, weil sie zu vollkommenen Zeitpunkten aufgerufen werden. Es kann nicht garantiert werden, dass diese jeweils in gleichen zeitlichen Abständen voneinander aufgerufen werden (es sei denn, man führt eine Automatisierung dieser Vorgänge ein). Je nach Auslastung und HW variieren also dort die zurückgekommenen Zeitpunkte und Werte. Man kann lediglich sagen, dass $A \leq C \leq D$, weil nach zeitlichem Ablauf wesentlich mehr Prozessorzyklen erfolgt sind.
+A,C und D sind zwar alles Aufrufe der selben Funktion, sind aber deshalb unabhängig voneinander, weil sie zu 
+vollkommenen Zeitpunkten aufgerufen werden. Es kann nicht garantiert werden, dass diese jeweils in gleichen 
+zeitlichen Abständen voneinander aufgerufen werden (es sei denn, man führt eine Automatisierung dieser 
+Vorgänge ein). Je nach Auslastung und HW variieren also dort die zurückgekommenen Zeitpunkte und Werte. Man kann lediglich sagen, dass $A \leq C \leq D$, weil nach zeitlichem Ablauf wesentlich mehr Prozessorzyklen erfolgt sind.
 
 \section*{Aufgabe 2 - Deterministische Zufallszahlengeneratoren}
 
